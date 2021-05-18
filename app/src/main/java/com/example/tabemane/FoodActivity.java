@@ -174,9 +174,9 @@ public class FoodActivity extends AppCompatActivity {
         /*追加時*/
         @Override
         public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            Log.d("あべ","だいすけ"+snapshot.getValue().toString());
+            Log.d("一覧",snapshot.getValue().toString());
 
-            getKey(snapshot);
+            Iterator itr = getKey(snapshot);
         }
 
         @Override
@@ -199,6 +199,8 @@ public class FoodActivity extends AppCompatActivity {
     private Iterator getKey(DataSnapshot snapshot){
         HashMap map = (HashMap)snapshot.getValue();
         Iterator itr = map.keySet().iterator();
+
+        textSet(itr,snapshot);
 
         return itr;
     }
@@ -226,6 +228,8 @@ public class FoodActivity extends AppCompatActivity {
             viewId = res.getIdentifier("foodQuant0"+i,"id",getPackageName());
             textView = findViewById(viewId);
             textView.setText(quant);
+
+            i += 1;
 
         }
     }
