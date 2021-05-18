@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Tabemane</string>
+    <string name="action_string1">設定</string>
+    <string name="action_string2">ログアウト</string>
+    <string name="saledate">特売日</string>
+    <string name="quest">アンケート</string>
+    <string name="realsale">リアルタイムセール</string>
+    <string name="suirt">スイーツ</string>
+</resources>
