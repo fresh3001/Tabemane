@@ -44,8 +44,16 @@ public class RecipeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         /*************共通frame*************/
 
-
         /******************ここから下にpage毎記述*******************/
+        ImageButton nextActivityButton = findViewById(R.id.recipeImageButton01);
+        nextActivityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RecipeActivity.this, Recipe02Activity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -130,5 +138,7 @@ public class RecipeActivity extends AppCompatActivity {
     /***********************共通listner*********************/
 
     /***********************page毎listner*********************/
+    //recipeImageButton01(肉じゃが）押下時
+
 }
 
