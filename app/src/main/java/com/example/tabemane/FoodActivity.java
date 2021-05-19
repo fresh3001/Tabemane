@@ -64,7 +64,7 @@ public class FoodActivity extends AppCompatActivity {
         /******************ここから下にpage毎記述*******************/
         //DBアクセス
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-        reference.child("野菜").addValueEventListener(listener);
+        reference.child("食材").addValueEventListener(listener);
 
     }
 
