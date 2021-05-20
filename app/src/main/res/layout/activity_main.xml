@@ -10,15 +10,14 @@
 
     <!--ver2-->
     <!--toolbar-->
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="496dp"
         android:background="@color/gray"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toTopOf="@+id/quest_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,9 +32,9 @@
         android:layout_marginLeft="330dp"
         android:layout_marginBottom="8dp"
         android:background="@color/black"
-        app:srcCompat="@drawable/shopimage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/shopimage"
         tools:ignore="MissingConstraints" />
 
     <!--ホーム-->
@@ -108,56 +107,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.293" />
 
-    <Button
-        android:id="@+id/sale_button"
-        android:layout_width="match_parent"
-        android:layout_height="88dp"
-        android:layout_marginStart="95dp"
-        android:layout_marginLeft="95dp"
-        android:layout_marginEnd="95dp"
-        android:layout_marginRight="95dp"
-        android:layout_marginBottom="40dp"
-        android:text="@string/saledate"
-        app:layout_constraintBottom_toTopOf="@+id/realsale_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/quest_button"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="95dp"
-        android:layout_marginLeft="95dp"
-        android:layout_marginEnd="95dp"
-        android:layout_marginRight="95dp"
-        android:layout_marginBottom="91dp"
-        android:text="@string/quest"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/realsale_button"
-        android:layout_width="match_parent"
-        android:layout_height="88dp"
-        android:layout_marginStart="95dp"
-        android:layout_marginLeft="95dp"
-        android:layout_marginEnd="95dp"
-        android:layout_marginRight="95dp"
-        android:layout_marginBottom="40dp"
-        android:text="@string/realsale"
-        app:layout_constraintBottom_toTopOf="@+id/quest_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <!--ImageView-->
+
     <ImageView
         android:id="@+id/barcode_ImageView"
         android:layout_width="match_parent"
@@ -173,4 +124,85 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foregroundGravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_marginTop="300dp"
+        android:layout_marginBottom="70dp">
+
+        <ImageButton
+            android:id="@+id/imageButton10"
+            android:layout_width="266dp"
+            android:layout_height="62dp"
+
+            android:layout_gravity="center_horizontal"
+            android:background="@color/yellow"
+            app:srcCompat="@drawable/tokubaibi"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="64dp"
+            tools:layout_editor_absoluteY="303dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton11"
+            android:layout_width="266dp"
+            android:layout_height="62dp"
+            android:layout_marginTop="49dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/yellow"
+            app:srcCompat="@drawable/realtimesalemoji3"
+            tools:layout_editor_absoluteX="64dp"
+            tools:layout_editor_absoluteY="415dp"
+            tools:ignore="MissingConstraints" />
+
+        <ImageButton
+            android:id="@+id/imageButton12"
+            android:layout_width="266dp"
+            android:layout_height="62dp"
+            android:layout_marginTop="49dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/yellow"
+            app:srcCompat="@drawable/annketomiji3"
+            tools:layout_editor_absoluteX="64dp"
+            tools:layout_editor_absoluteY="531dp"
+            tools:ignore="MissingConstraints" />
+
+    </LinearLayout>
+
+<!--
+    <ImageButton
+        android:id="@+id/imageButton10"
+        android:layout_width="266dp"
+        android:layout_height="62dp"
+
+        android:background="@color/yellow"
+        app:srcCompat="@drawable/tokubaibi"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="303dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton11"
+        android:layout_width="266dp"
+        android:layout_height="62dp"
+
+        android:background="@color/yellow"
+        app:srcCompat="@drawable/realtimesalemoji3"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="415dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/imageButton12"
+        android:layout_width="266dp"
+        android:layout_height="62dp"
+
+        android:background="@color/yellow"
+        app:srcCompat="@drawable/annketomiji3"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="531dp"
+        tools:ignore="MissingConstraints" />
+-->
 </androidx.constraintlayout.widget.ConstraintLayout>

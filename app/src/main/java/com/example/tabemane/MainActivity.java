@@ -66,9 +66,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
 
         //page毎
-        Button sale_button = findViewById(R.id.sale_button);
-        Button realsale_button = findViewById(R.id.realsale_button);
-        Button quest_button = findViewById(R.id.quest_button);
+
         TextView point_TextView = findViewById(R.id.point_TextView);
         ImageView barcode_ImageView = findViewById(R.id.barcode_ImageView);
 
