@@ -24,15 +24,6 @@ import androidx.appcompat.widget.Toolbar;
 //#1
 public class CouponActivity extends AppCompatActivity {
 
-    //Coupon
-    String[] strings = {
-            "全品10%OFF",
-            "全品5%OFF",
-            "惣菜100円引き",
-            "惣菜10%OFF",
-            "雨の日限定！惣菜200円引き",
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,9 +49,9 @@ public class CouponActivity extends AppCompatActivity {
 
 
         /******************ここから下にpage毎記述*******************/
-        ListView coupon_listview = findViewById(R.id.couponListView);
-        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,strings);
-        coupon_listview.setAdapter(adapter);
+//        ListView coupon_listview = findViewById(R.id.couponListView);
+//        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,strings);
+//        coupon_listview.setAdapter(adapter);
 
     }
 
@@ -145,6 +136,7 @@ public class CouponActivity extends AppCompatActivity {
     /***********************共通listner*********************/
 
     /***********************page毎listner*********************/
+
 
 }
 

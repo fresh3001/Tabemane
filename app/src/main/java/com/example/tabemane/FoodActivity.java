@@ -20,15 +20,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -63,16 +62,9 @@ public class FoodActivity extends AppCompatActivity {
 
 
         /******************ここから下にpage毎記述*******************/
+        //DBアクセス
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-        reference.addChildEventListener(listener);
-
-        Resources res = getResources();
-
-        int i = 0;
-
-        int viewId = res.getIdentifier("foodName0"+i,"id",getPackageName());
-        textView = findViewById(viewId);
-        textView.setText("test");
+        reference.child("食材").addValueEventListener(listener);
 
     }
 
@@ -157,36 +149,15 @@ public class FoodActivity extends AppCompatActivity {
     /***********************共通listner*********************/
 
     /***********************page毎listner*********************/
-    /*DBアクセス*/
-    ChildEventListener listener = new ChildEventListener() {
-        /*起動時*/
+    ValueEventListener listener = new ValueEventListener() {
         @Override
-        public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+        public void onDataChange(@NonNull DataSnapshot snapshot) {
             Log.d("一覧",snapshot.getValue().toString());
 
-            Iterator itr = getKey(snapshot);
+            HashMap map = (HashMap)snapshot.getValue();
+            Iterator mapkey = map.keySet().iterator();
 
-            //textSet(itr,snapshot);
-
-
-        }
-
-        /*追加時*/
-        @Override
-        public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            Log.d("一覧",snapshot.getValue().toString());
-
-            Iterator itr = getKey(snapshot);
-        }
-
-        @Override
-        public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-        }
-
-        @Override
-        public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
+            textSet(mapkey,map);
         }
 
         @Override
@@ -195,46 +166,35 @@ public class FoodActivity extends AppCompatActivity {
         }
     };
 
-    //key取得
-    private Iterator getKey(DataSnapshot snapshot){
-        HashMap map = (HashMap)snapshot.getValue();
-        Iterator itr = map.keySet().iterator();
-
-        textSet(itr,snapshot);
-
-        return itr;
-    }
 
     //TextViewにセットする
-    private void textSet(Iterator itr,DataSnapshot snapshot){
+    private void textSet(Iterator mapkey,HashMap map) {
 
         Resources res = getResources();
+
         int i = 0;
 
-        while(itr.hasNext()){
-            Object key = itr.next();
-            String name = snapshot.child(key.toString()).child("name").getValue().toString();
-            String date = snapshot.child(key.toString()).child("date").getValue().toString();
-            String quant= snapshot.child(key.toString()).child("quant").getValue().toString();
+        while (mapkey.hasNext()) {
+            Object key = mapkey.next();
+            HashMap map_child = (HashMap)map.get(key);
+            String name = map_child.get("name").toString();
+            String date = map_child.get("date").toString();
+            String quant = map_child.get("quant").toString();
 
-            int viewId = res.getIdentifier("foodName0"+i,"id",getPackageName());
+            int viewId = res.getIdentifier("foodName0" + i, "id", getPackageName());
             textView = findViewById(viewId);
             textView.setText(name);
 
-            viewId = res.getIdentifier("foodDate0"+i,"id",getPackageName());
+            viewId = res.getIdentifier("foodDate0" + i, "id", getPackageName());
             textView = findViewById(viewId);
             textView.setText(date);
 
-            viewId = res.getIdentifier("foodQuant0"+i,"id",getPackageName());
+            viewId = res.getIdentifier("foodQuant0" + i, "id", getPackageName());
             textView = findViewById(viewId);
             textView.setText(quant);
 
             i += 1;
-
         }
     }
-
-
-
 }
 
