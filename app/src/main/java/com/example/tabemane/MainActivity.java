@@ -1,5 +1,7 @@
 package com.example.tabemane;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,10 +17,44 @@ import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
+    final String TAG = "DialogTest";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        //消費期限アラート
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("・じゃがいも(2021年5月27日)\n・人参(2021年5月28日)\nの消費期限が近づいています。\n");
+        builder.setPositiveButton(
+                "使用済",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+        builder.setNegativeButton(
+                "レシピ",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(
+                                getApplication(), RecipeActivity.class);
+                        startActivity(intent);
+                    }
+                });
+        builder.setNeutralButton(
+                "閉じる",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+        builder.show();
+
+
 
         //定義
         //共通・ボタン

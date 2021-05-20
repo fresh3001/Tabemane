@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -24,22 +25,13 @@ import androidx.appcompat.widget.Toolbar;
 //#1
 public class ShopActivity extends AppCompatActivity {
 
-    //Shop
-    String[] strings = {
-            "〇〇新宿店",
-            "〇〇三鷹店",
-            "◇◇◇高円寺店",
-            "◇◇◇川崎店",
-            "✕✕✕浦和店",
-            "✕✕✕横浜店",
-            "△△△渋谷店",
-            "△△△八王子店",
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
+
+
 
         /*************共通frame*************/
         //定義
@@ -61,9 +53,6 @@ public class ShopActivity extends AppCompatActivity {
 
 
         /******************ここから下にpage毎記述*******************/
-        ListView coupon_listview = findViewById(R.id.shopListView);
-        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,strings);
-        coupon_listview.setAdapter(adapter);
 
     }
 
