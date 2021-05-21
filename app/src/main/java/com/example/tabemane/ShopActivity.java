@@ -42,11 +42,11 @@ public class ShopActivity extends AppCompatActivity {
         ImageButton shop_imagebutton = findViewById(R.id.shopImageButton);
         Toolbar toolbar = findViewById(R.id.toolbar);
         //インスタンス
-        home_imagebutton.setOnClickListener(new HomeClickListner());
-        food_imagebutton.setOnClickListener(new FoodClickListner());
-        recipe_imagebutton.setOnClickListener(new RecipeClickListner());
-        coupon_imagebutton.setOnClickListener(new CouponClickListner());
-        shop_imagebutton.setOnClickListener(new ShopClickListner());
+        home_imagebutton.setOnClickListener(new HomeClickListener());
+        food_imagebutton.setOnClickListener(new FoodClickListener());
+        recipe_imagebutton.setOnClickListener(new RecipeClickListener());
+        coupon_imagebutton.setOnClickListener(new CouponClickListener());
+        shop_imagebutton.setOnClickListener(new ShopClickListener());
         toolbar.setTitle("食べマネ");
         setSupportActionBar(toolbar);
         /*************共通frame*************/
@@ -85,7 +85,7 @@ public class ShopActivity extends AppCompatActivity {
     }
 
     //home押下時
-    private class HomeClickListner implements View.OnClickListener{
+    private class HomeClickListener implements View.OnClickListener{
 
         @Override
         public void onClick(View v) {
@@ -95,7 +95,7 @@ public class ShopActivity extends AppCompatActivity {
     }
 
     //food押下時
-    private class FoodClickListner implements View.OnClickListener{
+    private class FoodClickListener implements View.OnClickListener{
 
         @Override
         public void onClick(View v) {
@@ -105,7 +105,7 @@ public class ShopActivity extends AppCompatActivity {
     }
 
     //recipe押下時
-    private class RecipeClickListner implements View.OnClickListener{
+    private class RecipeClickListener implements View.OnClickListener{
 
         @Override
         public void onClick(View v) {
@@ -115,27 +115,27 @@ public class ShopActivity extends AppCompatActivity {
     }
 
     //coupon押下時
-    private class CouponClickListner implements View.OnClickListener{
+    private class CouponClickListener implements View.OnClickListener{
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(getApplication(), CouponActivity.class);
+            Intent intent = new Intent(getApplication(),CouponActivity.class);
             startActivity(intent);
         }
     }
 
     //shop押下時
-    private class ShopClickListner implements View.OnClickListener{
+    private class ShopClickListener implements View.OnClickListener{
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(getApplication(),ShopActivity.class);
+            Intent intent = new Intent(getApplication(), ShopActivity.class);
             startActivity(intent);
         }
     }
 
-    /***********************共通listner*********************/
+    /***********************共通listener*********************/
 
-    /***********************page毎listner*********************/
+    /***********************page毎listener*********************/
 }
 

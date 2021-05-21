@@ -10,16 +10,32 @@ package com.example.tabemane;
  ************************************************************************/
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Iterator;
 
 //#1
 public class CouponActivity extends AppCompatActivity {
@@ -28,6 +44,7 @@ public class CouponActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coupon);
+
 
         /*************共通frame*************/
         //定義
@@ -38,11 +55,11 @@ public class CouponActivity extends AppCompatActivity {
         ImageButton shop_imagebutton = findViewById(R.id.shopImageButton);
         Toolbar toolbar = findViewById(R.id.toolbar);
         //インスタンス
-        home_imagebutton.setOnClickListener(new HomeClickListner());
-        food_imagebutton.setOnClickListener(new FoodClickListner());
-        recipe_imagebutton.setOnClickListener(new RecipeClickListner());
-        coupon_imagebutton.setOnClickListener(new CouponClickListner());
-        shop_imagebutton.setOnClickListener(new ShopClickListner());
+        home_imagebutton.setOnClickListener(new HomeClickListener());
+        food_imagebutton.setOnClickListener(new FoodClickListener());
+        recipe_imagebutton.setOnClickListener(new RecipeClickListener());
+        coupon_imagebutton.setOnClickListener(new CouponClickListener());
+        shop_imagebutton.setOnClickListener(new ShopClickListener());
         toolbar.setTitle("食べマネ");
         setSupportActionBar(toolbar);
         /*************共通frame*************/
@@ -52,6 +69,12 @@ public class CouponActivity extends AppCompatActivity {
 //        ListView coupon_listview = findViewById(R.id.couponListView);
 //        ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,strings);
 //        coupon_listview.setAdapter(adapter);
+
+
+
+        //DBアクセス
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        reference.child("クーポン").addValueEventListener(listener);
 
     }
 
@@ -84,7 +107,7 @@ public class CouponActivity extends AppCompatActivity {
     }
 
     //home押下時
-    private class HomeClickListner implements View.OnClickListener{
+    private class HomeClickListener implements View.OnClickListener{
 
         @Override
         public void onClick(View v) {
@@ -94,7 +117,7 @@ public class CouponActivity extends AppCompatActivity {
     }
 
     //food押下時
-    private class FoodClickListner implements View.OnClickListener{
+    private class FoodClickListener implements View.OnClickListener{
 
         @Override
         public void onClick(View v) {
@@ -104,7 +127,7 @@ public class CouponActivity extends AppCompatActivity {
     }
 
     //recipe押下時
-    private class RecipeClickListner implements View.OnClickListener{
+    private class RecipeClickListener implements View.OnClickListener{
 
         @Override
         public void onClick(View v) {
@@ -114,7 +137,7 @@ public class CouponActivity extends AppCompatActivity {
     }
 
     //coupon押下時
-    private class CouponClickListner implements View.OnClickListener{
+    private class CouponClickListener implements View.OnClickListener{
 
         @Override
         public void onClick(View v) {
@@ -124,7 +147,7 @@ public class CouponActivity extends AppCompatActivity {
     }
 
     //shop押下時
-    private class ShopClickListner implements View.OnClickListener{
+    private class ShopClickListener implements View.OnClickListener{
 
         @Override
         public void onClick(View v) {
@@ -133,9 +156,56 @@ public class CouponActivity extends AppCompatActivity {
         }
     }
 
-    /***********************共通listner*********************/
+    /***********************共通listener*********************/
 
-    /***********************page毎listner*********************/
+    /***********************page毎listener*********************/
+    ValueEventListener listener = new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot snapshot) {
+            Log.d("一覧",snapshot.getValue().toString());
+
+            HashMap map = (HashMap)snapshot.getValue();
+            Iterator mapkey = map.keySet().iterator();
+
+            LinearLayout couponLayout = findViewById(R.id.couponLayout);
+
+            int filenumber = 1;
+
+            while (mapkey.hasNext()) {
+                Object key = mapkey.next();
+                HashMap map_child = (HashMap)map.get(key);
+                Log.d("あべ",key+ "=" +map_child.get("name"));
+                if(!key.equals("001"))
+                    generateView(map_child.get("name").toString(),couponLayout,filenumber);
+            }
+
+
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
+
+        }
+    };
+
+    private void generateView(String text,LinearLayout couponLayout,int filenumber){
+
+        ImageView imageView = new ImageView(this);
+        Resources res = getResources();
+        String filename = "coupon" + String.valueOf(filenumber )+ "image";
+        int fileId = res.getIdentifier(filename, "drawable", getPackageName());
+        imageView.setImageResource(fileId);
+
+        TextView textView = new TextView(this);
+        textView.setText(text);
+        textView.setGravity(Gravity.CENTER);
+        textView.setTextSize(20f);
+        textView.setPadding(0,10,0,30);
+
+        couponLayout.addView(imageView);
+        couponLayout.addView(textView);
+
+    }
 
 
 }
