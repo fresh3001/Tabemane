@@ -29,6 +29,10 @@
     <string name="movingimg02">動画2</string>
     <string name="movingimg03">動画3</string>
     <string name="movingimg04">動画4</string>
+    <string name="prompt_id">ユーザーID</string>
+    <string name="prompt_password">パスワード</string>
+    <string name="action_sign_in_short">ログイン</string>
+    <string name="action_sign_in">ログイン</string>
     <string-array name="Spinner_items">
         <item>-選択-</item>
         <item>5日前</item>

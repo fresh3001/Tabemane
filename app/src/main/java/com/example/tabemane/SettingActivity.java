@@ -88,7 +88,7 @@ public class SettingActivity extends AppCompatActivity {
 
         //ログアウト押下時
         if(id==R.id.action_string2){
-            Intent intent = new Intent(getApplication(), MainActivity.class);
+            Intent intent = new Intent(getApplication(), LoginActivity.class);
             startActivity(intent);
         }
         return true;

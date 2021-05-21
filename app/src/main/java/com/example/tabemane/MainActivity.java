@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
 
         //page毎
-
         TextView point_TextView = findViewById(R.id.point_TextView);
         ImageView barcode_ImageView = findViewById(R.id.barcode_ImageView);
 
@@ -112,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
         //ログアウト押下時
         if(id==R.id.action_string2){
-            Intent intent = new Intent(getApplication(), MainActivity.class);
+            Intent intent = new Intent(getApplication(), LoginActivity.class);
             startActivity(intent);
         }
         return true;

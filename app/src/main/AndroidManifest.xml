@@ -9,13 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".SettingActivity"></activity>
         <activity android:name=".FoodActivity"></activity>
         <activity android:name=".RecipeActivity"></activity>
         <activity android:name=".CouponActivity"></activity>
         <activity android:name=".ShopActivity"></activity>
         <activity android:name=".Alert_setting"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
