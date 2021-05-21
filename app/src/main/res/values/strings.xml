@@ -29,4 +29,13 @@
     <string name="movingimg02">動画2</string>
     <string name="movingimg03">動画3</string>
     <string name="movingimg04">動画4</string>
+    <string-array name="Spinner_items">
+        <item>-選択-</item>
+        <item>5日前</item>
+        <item>4日前</item>
+        <item>3日前</item>
+        <item>2日前</item>
+        <item>前日</item>
+        <item>当日</item>
+    </string-array>
 </resources>

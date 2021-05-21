@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -42,6 +43,17 @@ public class FoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food);
 
+        Button button = findViewById(R.id.alert_button);
+
+        //アラート設定ボタン押下時
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), Alert_setting.class);
+                startActivity(intent);
+            }
+        });
+
         /*************共通frame*************/
         //定義
         ImageButton home_imagebutton = findViewById(R.id.homeImageButton);
@@ -59,6 +71,8 @@ public class FoodActivity extends AppCompatActivity {
         toolbar.setTitle("食べマネ");
         setSupportActionBar(toolbar);
         /*************共通frame*************/
+
+
 
 
         /******************ここから下にpage毎記述*******************/
