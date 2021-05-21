@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,8 +13,18 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,36 +35,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        //消費期限アラート
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("・じゃがいも(2021年5月27日)\n・人参(2021年5月28日)\nの消費期限が近づいています。\n");
-        builder.setPositiveButton(
-                "使用済",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                });
-        builder.setNegativeButton(
-                "レシピ",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(
-                                getApplication(), RecipeActivity.class);
-                        startActivity(intent);
-                    }
-                });
-        builder.setNeutralButton(
-                "閉じる",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                });
-        builder.show();
-
+        //DBアクセス
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        reference.child("食材").addValueEventListener(listener);
 
 
         //定義
@@ -83,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
         shop_imagebutton.setOnClickListener(new ShopClickListener());
         toolbar.setTitle("食べマネ");
         setSupportActionBar(toolbar);
+
+        //toolbar.setNavigationIcon(R.drawable.tabemane_logo);
 
 
 
@@ -170,4 +156,69 @@ public class MainActivity extends AppCompatActivity {
     /***********************共通listener*********************/
 
     /***********************page毎listener*********************/
+    ValueEventListener listener = new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot snapshot) {
+            Log.d("一覧",snapshot.getValue().toString());
+
+            HashMap map = (HashMap)snapshot.getValue();
+            Iterator mapkey = map.keySet().iterator();
+
+            syouhi_Alert(map,mapkey);
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
+
+        }
+    };
+
+    private void syouhi_Alert(HashMap map,Iterator mapkey){
+
+        boolean flag = false;
+        long x = 1;
+
+        //name=じゃがいもがあったら表示でもいいかも
+        //↑そのためには個数0になったら消すシステムが必要
+
+        while (mapkey.hasNext()) {
+            Object key = mapkey.next();
+            HashMap map_child = (HashMap) map.get(key);
+            if(map_child.get("quant").equals(x))
+                flag = true;
+        }
+
+        if(!flag){
+            //消費期限アラート
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("・じゃがいも(2021年5月27日)\n・人参(2021年5月28日)\nの消費期限が近づいています。\n");
+            builder.setPositiveButton(
+                    "使用済",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+            builder.setNegativeButton(
+                    "レシピ",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(
+                                    getApplication(), RecipeActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+            builder.setNeutralButton(
+                    "閉じる",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+            builder.show();
+        }
+
+    }
+
 }
