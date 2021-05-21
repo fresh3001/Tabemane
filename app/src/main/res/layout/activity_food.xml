@@ -138,7 +138,7 @@
             <TextView
                 android:id="@+id/foodDate00"
                 android:layout_gravity="center"
-                android:text="----NO DATA----"
+                android:text="----LOADING----"
                 android:textSize="25dp"></TextView>
 
             <TextView
