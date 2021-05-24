@@ -113,7 +113,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.48"
-        app:srcCompat="@drawable/nikujagaimage" />
+        app:srcCompat="@drawable/nikujaga"
+        android:scaleType="fitXY"/>
 
 
     <ImageButton
@@ -128,7 +129,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.006"
-        app:srcCompat="@drawable/carryimage" />
+        app:srcCompat="@drawable/carry"
+        android:scaleType="fitXY"/>
 
 
     <ImageButton
@@ -142,7 +144,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.8"
-        app:srcCompat="@drawable/potetosaladaimage" />
+        app:srcCompat="@drawable/potatosalad"
+        android:scaleType="fitXY"/>
 
     <ImageButton
         android:id="@+id/recipeImageButton04"
@@ -155,7 +158,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.8"
-        app:srcCompat="@drawable/croquetteimage" />
+        app:srcCompat="@drawable/korokke"
+        android:scaleType="fitXY"/>
 
     <!--検索欄-->
     <SearchView
@@ -221,11 +225,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.23" />
 
+
+    <!--お気に入りボタン-->
     <ImageView
         android:id="@+id/heart1"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:src="@drawable/heart"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/heart2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -236,9 +242,9 @@
 
     <ImageView
         android:id="@+id/heart2"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:src="@drawable/heart"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/heart2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.561"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -249,9 +255,9 @@
 
     <ImageView
         android:id="@+id/heart3"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:src="@drawable/heart"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/heart2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -262,9 +268,9 @@
 
     <ImageView
         android:id="@+id/heart4"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:src="@drawable/heart"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/heart2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.563"
         app:layout_constraintLeft_toLeftOf="parent"

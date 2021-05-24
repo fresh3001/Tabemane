@@ -145,15 +145,16 @@
 
             <ImageView
                 android:id="@+id/recipe_img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:layout_gravity="center_horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.49"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recipe_name"
-                app:srcCompat="@drawable/nikujagaimage"
+                app:srcCompat="@drawable/nikujaga"
                 tools:ignore="ContentDescription" />
+
 
             <TextView
                 android:id="@+id/material"
@@ -163,7 +164,7 @@
                 android:text="@string/material"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recipe_img" />
+                app:layout_constraintTop_toBottomOf="@+id/recipe_img"/>
 
             <TextView
                 android:id="@+id/Howtomake_text"
@@ -174,6 +175,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/material"/>
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </RadioGroup>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="checkButton"
+                android:text="お気に入り" />
 
         </LinearLayout>
     </ScrollView>
@@ -186,6 +200,5 @@
         app:layout_constraintBottom_toTopOf="@+id/shopImageButton"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

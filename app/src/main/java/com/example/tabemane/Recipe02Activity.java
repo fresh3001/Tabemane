@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +27,9 @@ import java.util.Iterator;
 
 public class Recipe02Activity extends AppCompatActivity {
 
+    RadioGroup radioGroup;
+    RadioButton radioButton;
+
     String[] foods = {"じゃがいも", "にんじん", "たまねぎ"};
 
     int[] quants = {4, 1, 1};
@@ -35,6 +40,8 @@ public class Recipe02Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe02);
+
+        radioGroup = findViewById(R.id.radioGroup);
 
         /*************共通frame*************/
         //定義
@@ -60,6 +67,12 @@ public class Recipe02Activity extends AppCompatActivity {
 
     }
 
+
+    public void checkButton(View v){
+        int radioId = radioGroup.getCheckedRadioButtonId();
+
+        radioButton = findViewById(radioId);
+    }
     /***********************共通listner*********************/
 
     //サブメニュー用
@@ -82,7 +95,7 @@ public class Recipe02Activity extends AppCompatActivity {
 
         //ログアウト押下時
         if (id == R.id.action_string2) {
-            Intent intent = new Intent(getApplication(), LoginActivity.class);
+            Intent intent = new Intent(getApplication(), MainActivity.class);
             startActivity(intent);
         }
         return true;
