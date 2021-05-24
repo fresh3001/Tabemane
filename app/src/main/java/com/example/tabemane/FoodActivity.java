@@ -195,19 +195,33 @@ public class FoodActivity extends AppCompatActivity {
             String date = map_child.get("date").toString();
             String quant = map_child.get("quant").toString();
 
-            int viewId = res.getIdentifier("foodName0" + i, "id", getPackageName());
-            textView = findViewById(viewId);
-            textView.setText(name);
+            int quant_int = 1;
+            double quant_double = 1.0;
 
-            viewId = res.getIdentifier("foodDate0" + i, "id", getPackageName());
-            textView = findViewById(viewId);
-            textView.setText(date);
+            try {
+                quant_int = Integer.parseInt(quant);
+            }
+            catch (java.lang.NumberFormatException e){
+                quant_double = Double.valueOf(quant);
+            }
 
-            viewId = res.getIdentifier("foodQuant0" + i, "id", getPackageName());
-            textView = findViewById(viewId);
-            textView.setText(quant);
+            //個数が0以下でないとき表示する
+            if((quant_int > 0) && (quant_double > 0)) {
 
-            i += 1;
+                int viewId = res.getIdentifier("foodName0" + i, "id", getPackageName());
+                textView = findViewById(viewId);
+                textView.setText(name);
+
+                viewId = res.getIdentifier("foodDate0" + i, "id", getPackageName());
+                textView = findViewById(viewId);
+                textView.setText(date);
+
+                viewId = res.getIdentifier("foodQuant0" + i, "id", getPackageName());
+                textView = findViewById(viewId);
+                textView.setText(quant);
+
+                i++;
+            }
         }
     }
 }

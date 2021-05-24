@@ -176,19 +176,27 @@ public class MainActivity extends AppCompatActivity {
     private void syouhi_Alert(HashMap map,Iterator mapkey){
 
         boolean flag = false;
-        long x = 1;
-
-        //name=じゃがいもがあったら表示でもいいかも
-        //↑そのためには個数0になったら消すシステムが必要
 
         while (mapkey.hasNext()) {
             Object key = mapkey.next();
             HashMap map_child = (HashMap) map.get(key);
-            if(map_child.get("quant").equals(x))
+
+            String quant = map_child.get("quant").toString();
+
+            int quant_int = 1;
+            double quant_double = 1.0;
+
+            try {
+                quant_int = Integer.parseInt(quant);
+            }
+            catch (java.lang.NumberFormatException e){
+                quant_double = Double.valueOf(quant);
+            }
+            if((quant_int > 0) && (quant_double > 0) && (map_child.get("name").toString().equals("じゃがいも")))
                 flag = true;
         }
 
-        if(!flag){
+        if(flag){
             //消費期限アラート
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("・じゃがいも(2021年5月27日)\n・人参(2021年5月28日)\nの消費期限が近づいています。\n");

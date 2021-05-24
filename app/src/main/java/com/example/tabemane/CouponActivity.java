@@ -177,6 +177,8 @@ public class CouponActivity extends AppCompatActivity {
                 Log.d("あべ",key+ "=" +map_child.get("name"));
                 if(!key.equals("001"))
                     generateView(map_child.get("name").toString(),couponLayout,filenumber);
+                if(map.size() == 1)
+                    generateView("クーポンを所持していません",couponLayout,0);
             }
 
 
@@ -190,11 +192,15 @@ public class CouponActivity extends AppCompatActivity {
 
     private void generateView(String text,LinearLayout couponLayout,int filenumber){
 
-        ImageView imageView = new ImageView(this);
-        Resources res = getResources();
-        String filename = "coupon" + String.valueOf(filenumber )+ "image";
-        int fileId = res.getIdentifier(filename, "drawable", getPackageName());
-        imageView.setImageResource(fileId);
+        if(filenumber == 1) {
+            ImageView imageView = new ImageView(this);
+            Resources res = getResources();
+            String filename = "coupon" + String.valueOf(filenumber) + "image";
+            int fileId = res.getIdentifier(filename, "drawable", getPackageName());
+            imageView.setImageResource(fileId);
+
+            couponLayout.addView(imageView);
+        }
 
         TextView textView = new TextView(this);
         textView.setText(text);
@@ -202,7 +208,6 @@ public class CouponActivity extends AppCompatActivity {
         textView.setTextSize(20f);
         textView.setPadding(0,10,0,30);
 
-        couponLayout.addView(imageView);
         couponLayout.addView(textView);
 
     }
