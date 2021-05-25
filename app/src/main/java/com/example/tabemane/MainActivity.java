@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         //toolbar.setNavigationIcon(R.drawable.tabemane_logo);
 
-        ImageButton realsaleButton = findViewById(R.id.realsaleImageButton);
+        ImageButton realsaleButton = findViewById(R.id.realtimesalebuttun);
         realsaleButton.setOnClickListener(new RealsaleClickListener());
 
     }

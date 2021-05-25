@@ -15,9 +15,9 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@color/gray"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        android:background="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -134,37 +134,39 @@
         android:layout_marginBottom="70dp">
 
         <ImageButton
-            android:id="@+id/saleImageButton"
-            android:layout_width="266dp"
-            android:layout_height="62dp"
+            android:id="@+id/tokubaibibuttun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
             android:layout_gravity="center_horizontal"
-            android:background="@color/yellow"
-            app:srcCompat="@drawable/tokubaibi"
+
+            app:srcCompat="@drawable/questtokubaibi"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="64dp"
             tools:layout_editor_absoluteY="303dp" />
 
         <ImageButton
-            android:id="@+id/realsaleImageButton"
-            android:layout_width="266dp"
-            android:layout_height="62dp"
-            android:layout_marginTop="49dp"
+            android:id="@+id/realtimesalebuttun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="30dp"
             android:layout_gravity="center_horizontal"
-            android:background="@color/yellow"
-            app:srcCompat="@drawable/realtimesalemoji3"
+
+            app:srcCompat="@drawable/questrealtime"
             tools:layout_editor_absoluteX="64dp"
             tools:layout_editor_absoluteY="415dp"
             tools:ignore="MissingConstraints" />
 
         <ImageButton
-            android:id="@+id/questImageButton"
-            android:layout_width="266dp"
-            android:layout_height="62dp"
-            android:layout_marginTop="49dp"
+            android:id="@+id/questbuttun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="30dp"
             android:layout_gravity="center_horizontal"
-            android:background="@color/yellow"
-            app:srcCompat="@drawable/annketomiji3"
+
+            app:srcCompat="@drawable/quest"
             tools:layout_editor_absoluteX="64dp"
             tools:layout_editor_absoluteY="531dp"
             tools:ignore="MissingConstraints" />
