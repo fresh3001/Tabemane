@@ -70,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
         //toolbar.setNavigationIcon(R.drawable.tabemane_logo);
 
-
-
+        ImageButton realsaleButton = findViewById(R.id.realsaleImageButton);
+        realsaleButton.setOnClickListener(new RealsaleClickListener());
 
     }
 
@@ -156,6 +156,16 @@ public class MainActivity extends AppCompatActivity {
     /***********************共通listener*********************/
 
     /***********************page毎listener*********************/
+    //リアルタイムセール押下時
+    private class RealsaleClickListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getApplication(), RealsaleActivity.class);
+            startActivity(intent);
+        }
+    }
+
     ValueEventListener listener = new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot snapshot) {

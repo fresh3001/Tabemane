@@ -15,9 +15,9 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/gray"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
+        android:background="@color/gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -134,7 +134,7 @@
         android:layout_marginBottom="70dp">
 
         <ImageButton
-            android:id="@+id/imageButton10"
+            android:id="@+id/saleImageButton"
             android:layout_width="266dp"
             android:layout_height="62dp"
 
@@ -146,7 +146,7 @@
             tools:layout_editor_absoluteY="303dp" />
 
         <ImageButton
-            android:id="@+id/imageButton11"
+            android:id="@+id/realsaleImageButton"
             android:layout_width="266dp"
             android:layout_height="62dp"
             android:layout_marginTop="49dp"
@@ -158,7 +158,7 @@
             tools:ignore="MissingConstraints" />
 
         <ImageButton
-            android:id="@+id/imageButton12"
+            android:id="@+id/questImageButton"
             android:layout_width="266dp"
             android:layout_height="62dp"
             android:layout_marginTop="49dp"

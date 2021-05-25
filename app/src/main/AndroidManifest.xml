@@ -16,6 +16,7 @@
         <activity android:name=".CouponActivity"></activity>
         <activity android:name=".ShopActivity"></activity>
         <activity android:name=".Alert_setting"></activity>
+        <activity android:name=".RealsaleActivity"></activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

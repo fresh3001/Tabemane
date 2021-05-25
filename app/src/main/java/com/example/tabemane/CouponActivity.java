@@ -175,10 +175,12 @@ public class CouponActivity extends AppCompatActivity {
                 Object key = mapkey.next();
                 HashMap map_child = (HashMap)map.get(key);
                 Log.d("あべ",key+ "=" +map_child.get("name"));
-                if(!key.equals("001"))
-                    generateView(map_child.get("name").toString(),couponLayout,filenumber);
+//                if(!key.equals("001"))
+//                    generateView(map_child.get("name").toString(),couponLayout,filenumber);
                 if(map.size() == 1)
                     generateView("クーポンを所持していません",couponLayout,0);
+                if(map_child.get("name") != null)
+                    generateView(map_child.get("name").toString(),couponLayout,filenumber);
             }
 
 
